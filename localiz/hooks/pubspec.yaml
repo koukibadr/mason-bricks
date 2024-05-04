@@ -1,4 +1,4 @@
-name: localiz_hooks
+name: localization_setup_hooks
 
 environment:
   sdk: ">=2.12.0 <3.0.0"

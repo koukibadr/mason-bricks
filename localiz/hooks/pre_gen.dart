@@ -1,5 +1,43 @@
 import 'package:mason/mason.dart';
 
 void run(HookContext context) {
-  // TODO: add pre-generation logic.
+  List<dynamic> selectedLanguages = context.vars["languages"];
+  if (selectedLanguages.isEmpty) {
+    throw Exception("Select at least one language");
+  }
+
+  List<String> codeLanguages = [];
+  if (selectedLanguages.contains("English (en)")) {
+    codeLanguages.add("en");
+  }
+  if (selectedLanguages.contains("Arabic (ar)")) {
+    codeLanguages.add("ar");
+  }
+  if (selectedLanguages.contains("Chinese (zh-CN)")) {
+    codeLanguages.add("zh");
+  }
+  if (selectedLanguages.contains("Spanish (es)")) {
+    codeLanguages.add("es");
+  }
+  if (selectedLanguages.contains("French (fr-FR)")) {
+    codeLanguages.add("fr");
+  }
+
+  var defaultTemplateLang = context.logger.chooseOne(
+    "Select the default language template",
+    choices: codeLanguages,
+    defaultValue: codeLanguages.first,
+  );
+
+  context.vars = {
+    ...context.vars,
+    ...{
+      "withEn": selectedLanguages.contains("English (en)"),
+      "withAr": selectedLanguages.contains("Arabic (ar)"),
+      "withEs": selectedLanguages.contains("Spanish (es)"),
+      "withZh": selectedLanguages.contains("Chinese (zh-CN)"),
+      "withFr": selectedLanguages.contains("French (fr-FR)"),
+      "defaultTemplateLang": defaultTemplateLang,
+    }
+  };
 }
