@@ -1,17 +1,7 @@
 name: localiz
-description: A new brick created with the Mason CLI.
-
-# The following defines the brick repository url.
-# Uncomment and update the following line before publishing the brick.
-# repository: https://github.com/my_org/my_repo
-
-# The following defines the version and build number for your brick.
-# A version number is three numbers separated by dots, like 1.2.34
-# followed by an optional build number (separated by a +).
-version: 0.1.0+1
-
-# The following defines the environment for the current brick.
-# It includes the version of mason that the brick requires.
+description: Ease and Speed up Internationalizing Flutter Apps 
+repository: https://github.com/koukibadr/B-Bricks
+version: 1.0.0+1
 environment:
   mason: ">=0.1.0-dev.51 <0.1.0"
 vars:
@@ -24,3 +14,4 @@ vars:
       - Spanish (es)
       - French (fr-FR)
     prompt: Choose language to include in your app?
+    description: The languages that will be added to flutter project

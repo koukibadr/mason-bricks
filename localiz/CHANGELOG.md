@@ -1,3 +1,6 @@
-# 0.1.0+1
+# 1.0.0+1
 
-- TODO: Describe initial release.
+- Add predefined languages variable
+- Add default arb template language variable
+- Install required packages to flutter project
+- Add arb configuration and arb language files
