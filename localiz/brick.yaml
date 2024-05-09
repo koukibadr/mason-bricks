@@ -13,5 +13,5 @@ vars:
       - Chinese (zh-CN)
       - Spanish (es)
       - French (fr-FR)
-    prompt: Choose language to include in your app?
+    prompt: What are the languages you want to include?
     description: The languages that will be added to flutter project
