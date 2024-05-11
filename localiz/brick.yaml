@@ -1,7 +1,7 @@
 name: localiz
 description: Ease and Speed up Internationalizing Flutter Apps 
 repository: https://github.com/koukibadr/B-Bricks
-version: 1.0.0+1
+version: 1.1.0+1
 environment:
   mason: ">=0.1.0-dev.51 <0.1.0"
 vars:

@@ -1,9 +1,11 @@
 import 'dart:io';
 
 import 'package:mason/mason.dart';
+import 'handler/configure_pubspec.dart';
 import 'handler/package_installation_handler.dart';
 
 void run(HookContext context) async {
+  await ConfigurePubspec().setup();
   PackageInstallationHandler packageInstallationHandler =
       PackageInstallationHandler(
     hookContext: context,
