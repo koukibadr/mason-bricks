@@ -1,14 +1,17 @@
 import 'dart:io';
 
 import 'package:mason/mason.dart';
+import 'handler/package_installation_handler.dart';
 
 void run(HookContext context) async {
-  var progress = context.logger.progress('Installing packages');
-  await Process.run('flutter', ['pub', 'add', 'intl']);
-  await Process.run('flutter', ['pub', 'add', 'flutter_localization','--sdk','flutter']);
-  progress.complete();
-
-  progress = context.logger.progress('Generating localization');
-  await Process.run('flutter', ['gen-l10n']);
-  progress.complete();
+  PackageInstallationHandler packageInstallationHandler =
+      PackageInstallationHandler(
+    hookContext: context,
+  );
+  await packageInstallationHandler.installPackages();
+  context.logger.info('> flutter gen-l10n');
+  var genCodeResponse = await Process.run('flutter', ['gen-l10n']);
+  if (genCodeResponse.exitCode != 0) {
+    context.logger.err(genCodeResponse.stderr);
+  }
 }
