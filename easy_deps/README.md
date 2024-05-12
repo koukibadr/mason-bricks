@@ -1,40 +1,53 @@
-# Easy Deps
+# EasyDeps
 [![Powered by Mason](https://img.shields.io/endpoint?url=https%3A%2F%2Ftinyurl.com%2Fmason-badge)](https://github.com/felangel/mason)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Getting Started 🚀
 
-**Easy Deps** Ease the integration of arb localization into your flutter project with list of predefined languages (English, Arabic, Chinese...), the brick automatically adds the required packages to your project.
-This brick implement the official flutter-way to localize your app [Full documentation](https://docs.flutter.dev/ui/accessibility-and-internationalization/internationalization)
+**EasyDeps** This brick offers a seamless way to manage dependencies within your Mason projects. By integrating a dedicated dependency handler module and post-generation script, your brick can automatically install all required dependencies upon integration into a Flutter project. This approach simplifies your workflow by:
 
-**Features**
-- Integrate `l10n` folder contains all your arb files.
-- Add required packages to your pubspec file
-- Add arb configuration
+- Centralizing Dependencies: Eliminate manual dependency management within your brick. Dependencies reside in a dedicated package.json file, ensuring consistency and reducing redundancy.
+- Streamlined Installation: The post-generation script takes care of installing dependencies during brick integration. This eliminates the need for manual configuration in your Flutter project. 
+- Organized Project Structure: The dependency handler module resides within the hooks directory, promoting a clean and well-structured project layout.
 
 ## Usage 👨🏻‍💻👩🏻‍💻
 
 1- Run the following command in your terminal to add localiz to your mason local config
 ```bash
-mason add localiz
+mason add easy_deps
 ```
 
-2- Run the following command in your terminal to generate localiz brick
+2- Run the following command in your terminal to generate easy_deps brick
 ```bash
-mason make localiz
+mason make easy_deps
 ```
-Localiz will ask you about the languages you want to include into your project
+This will integrate the following Files/Directories in your mason brick
 
-## Input Variables 
+| __brick__
+    | packages.json
+|hooks
+    | dependency_handler
+        |package_installation_handler.dart
+        |package_model.dart
+    |post_gen.dart
 
-- The langauges you want to add to your flutter project
-- The default arb template language
-
-## Output Files 🔥
-
-- `l10n` folder under lib folder, contains all the arb files for each selected language
-- `l10n.yaml` under your project folder, this files contains all the configurations of arb localization
-
+`packages.json` template
+```json
+[
+  {
+    "package": "<package>", //dependency name
+    "version": null, //dependency version, if null the latest vereion will be installted
+    "dev_dependency": false, //will be installed as dev_dependency or not
+    "require_sdk": false //require sdk (eg sdk: flutter) or not
+  },
+  {
+    "package": "<another_package>", //dependency name
+    "version": "11.1.22", //dependency version, if null the latest vereion will be installted
+    "dev_dependency": false, //will be installed as dev_dependency or not
+    "require_sdk": true //require sdk (eg sdk: flutter) or not
+  },
+]
+```
 ## Contributing ⚽
 
 If you want to contribute to this project send me all your PRs and Issues here's the [Github Repo Link](https://github.com/koukibadr/B-Bricks).

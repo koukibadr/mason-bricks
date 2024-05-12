@@ -1,9 +1,14 @@
 [
-    {
-      "package": "intl",
-      "version": "0.18.1",
-      "dev_dependency": false,
-      "require_sdk": false
-    }
-  ]
-  
+  {
+    "package": "intl",
+    "version": "0.18.1",
+    "dev_dependency": false,
+    "require_sdk": false
+  },
+  {
+    "package": "searchable_listview",
+    "version": null,
+    "dev_dependency": false,
+    "require_sdk": false
+  }
+]
