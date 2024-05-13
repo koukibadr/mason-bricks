@@ -1,5 +1,3 @@
-import 'package:mason/mason.dart';
-
 class PackageModel {
   late String name;
   String? version;
