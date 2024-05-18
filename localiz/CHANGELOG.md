@@ -1,3 +1,7 @@
+# 1.1.1+1 - 18/05/2024
+
+- Update brick github repository
+
 # 1.1.0+1 - 11/05/2024
 
 - Update package and dependencies installation log
