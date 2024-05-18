@@ -1,3 +1,7 @@
+# 0.1.1+1 - 18/05/2024
+
+- Update brick github repository
+
 # 0.1.0+1 - 12/05/2024
 
 - Implement packages installation handler
