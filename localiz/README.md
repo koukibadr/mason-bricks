@@ -11,6 +11,7 @@ This brick implement the official flutter-way to localize your app [Full documen
 - Integrate `l10n` folder contains all your arb files.
 - Add required packages to your pubspec file
 - Add arb configuration
+- Add Gemini API Key
 
 ## Usage 👨🏻‍💻👩🏻‍💻
 
@@ -29,6 +30,7 @@ Localiz will ask you about the languages you want to include into your project
 
 - The langauges you want to add to your flutter project
 - The default arb template language
+- The Gemini API Key if you want to add translation API [see details](https://pub.dev/packages/arb_translate)
 
 ## Output Files 🔥
 
