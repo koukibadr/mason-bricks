@@ -1,3 +1,15 @@
+# 1.2.1+1 - 18/05/2024
+### Added
+* Added prompt from whether add Gemini API Key or not
+* New prompt asking for Gemini API Key
+* Updated l10n.yaml file to add `arb-translate-api-key`
+
+### Fixed
+* Fixing pubspec config file, when pubspec file conatins "generate: true" the brick won't update it.
+
+### Changed
+* Updated intl version installed with the brick from fixed version 0.18.1 to the latest version.
+
 # 1.1.1+1 - 18/05/2024
 
 - Update brick github repository
