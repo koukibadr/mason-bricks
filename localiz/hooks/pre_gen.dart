@@ -2,6 +2,11 @@ import 'package:mason/mason.dart';
 
 void run(HookContext context) {
   List<dynamic> selectedLanguages = context.vars["languages"];
+  dynamic haveGeminiApi = context.vars["have_gemini_api"];
+  var geminiApiKey = '';
+  if (haveGeminiApi) {
+    geminiApiKey = context.logger.prompt('What is your Gemini API Key ?');
+  }
   if (selectedLanguages.isEmpty) {
     throw Exception("Select at least one language");
   }
@@ -38,6 +43,7 @@ void run(HookContext context) {
       "withZh": selectedLanguages.contains("Chinese (zh-CN)"),
       "withFr": selectedLanguages.contains("French (fr-FR)"),
       "defaultTemplateLang": defaultTemplateLang,
+      "gemini_api_key": geminiApiKey
     }
   };
 }

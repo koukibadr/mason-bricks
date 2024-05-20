@@ -50,4 +50,4 @@ This will integrate the following Files/Directories in your mason brick
 ```
 ## Contributing ⚽
 
-If you want to contribute to this project send me all your PRs and Issues here's the [Github Repo Link](https://github.com/koukibadr/B-Bricks).
+If you want to contribute to this project send me all your PRs and Issues here's the [Github Repo Link](https://github.com/koukibadr/mason-bricks).

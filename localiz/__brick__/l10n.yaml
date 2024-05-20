@@ -3,3 +3,4 @@ template-arb-file: app_{{defaultTemplateLang}}.arb
 output-localization-file: app_localizations.dart
 nullable-getter: false
 untranslated-messages-file: untranslated-messages.txt
+{{#have_gemini_api}}arb-translate-api-key: {{gemini_api_key}}{{/have_gemini_api}}
