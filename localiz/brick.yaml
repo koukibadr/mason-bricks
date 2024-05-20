@@ -15,3 +15,8 @@ vars:
       - French (fr-FR)
     prompt: What are the languages you want to include?
     description: The languages that will be added to flutter project
+  have_gemini_api:
+    type: boolean
+    default: false
+    prompt: Do you want to configure Gemini API Key for ARB Translations?
+    description: Indicate if the localization config will have gemini api key or not
