@@ -38,13 +38,15 @@ This will integrate the following Files/Directories in your mason brick
     "package": "<package>", //dependency name
     "version": null, //dependency version, if null the latest vereion will be installted
     "dev_dependency": false, //will be installed as dev_dependency or not
-    "require_sdk": false //require sdk (eg sdk: flutter) or not
+    "require_sdk": false, //require sdk (eg sdk: flutter) or not
+    "required": false //required or not, if not and there's an error on installation the post_gen will continue the other tasks
   },
   {
     "package": "<another_package>", //dependency name
     "version": "11.1.22", //dependency version, if null the latest vereion will be installted
     "dev_dependency": false, //will be installed as dev_dependency or not
-    "require_sdk": true //require sdk (eg sdk: flutter) or not
+    "require_sdk": true, //require sdk (eg sdk: flutter) or not,
+    "required": true
   },
 ]
 ```

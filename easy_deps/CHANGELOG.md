@@ -1,3 +1,7 @@
+# 0.2.1+1 - 18/05/2024
+
+- Update brick github repository
+
 # 0.1.1+1 - 18/05/2024
 
 - Update brick github repository

@@ -1,6 +1,6 @@
 name: easy_deps
 description: Add packages installation to your mason brick project
 repository: https://github.com/koukibadr/mason-bricks
-version: 0.1.1+1
+version: 0.2.1+1
 environment:
   mason: ">=0.1.0-dev.51 <0.1.0"
