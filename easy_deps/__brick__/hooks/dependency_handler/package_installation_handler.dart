@@ -26,9 +26,10 @@ class PackageInstallationHandler {
 
   Future<void> installPackages() async {
     List<PackageModel> listOfPackages = await getPackagesToInstall();
+
     hookContext.logger.info('Installing packages');
     for (var package in listOfPackages) {
-      hookContext.logger.info('Installing ${package.name}');
+      var progress = hookContext.logger.progress('Installing ${package.name}');
       ProcessResult installationResult;
       List<String> installationCommandArgs = ['pub', 'add'];
       if (package.devDependency) {
@@ -51,11 +52,12 @@ class PackageInstallationHandler {
           installationCommandArgs,
         );
       }
-      if (installationResult.exitCode != 0) {
-        hookContext.logger.write('Error: ${installationResult.stderr}\n');
+      if (installationResult.exitCode != 0 && package.isRquired) {
+        progress.fail("Error: ${installationResult.stderr}");
         await Process.run('rm', ['-f', 'packages.json']);
         exit(-1);
       }
+      progress.complete();
     }
     await Process.run('rm', ['-f', 'packages.json']);
   }
