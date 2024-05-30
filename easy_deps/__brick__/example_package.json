@@ -1,0 +1,30 @@
+[
+  {
+    "package": "searchable_listview",
+    "version": null,
+    "dev_dependency": false,
+    "require_sdk": false,
+    "required": true
+  },
+  {
+    "package": "motion_toast",
+    "version": "2.10.0",
+    "dev_dependency": false,
+    "require_sdk": false,
+    "required": true
+  },
+  {
+    "package": "build_runner",
+    "version": null,
+    "dev_dependency": true,
+    "require_sdk": false,
+    "required": {{builder_runner_required}} //directly value returned from the brick.yaml
+  },
+  {
+    "package": "intl",
+    "version": null,
+    "dev_dependency": false,
+    "require_sdk": false,
+    "required": {{intl_required}} //directly value returned from the brick.yaml
+  }
+]
