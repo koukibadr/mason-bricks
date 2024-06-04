@@ -14,10 +14,10 @@ class PackageModel {
   });
 
   PackageModel.fromJson(Map<String, dynamic> json) {
-    this.name = json["package"];
-    this.version = json["version"];
-    this.devDependency = json["dev_dependency"];
-    this.requireSdk = json["require_sdk"] ?? false;
-    this.isRquired = json["required"] ?? true;
+    name = json["package"];
+    version = json["version"];
+    devDependency = json["dev_dependency"];
+    requireSdk = json["require_sdk"] ?? false;
+    isRquired = json["required"] ?? true;
   }
 }
