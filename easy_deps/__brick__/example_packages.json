@@ -18,7 +18,7 @@
     "version": null,
     "dev_dependency": true,
     "require_sdk": false,
-    "required": false
+    "required": {{install_build_runner}}
   },
   {
     "package": "intl",
