@@ -37,7 +37,7 @@ class PackageInstallationHandler {
       } else if (package.version != null) {
         installationCommandArgs.add('${package.name}:${package.version}');
       } else {
-        installationCommandArgs.add('${package.name}');
+        installationCommandArgs.add(package.name);
       }
       if (package.requireSdk) {
         installationCommandArgs.addAll(['--sdk', 'flutter']);

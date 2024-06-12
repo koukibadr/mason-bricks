@@ -5,14 +5,6 @@ class PackageModel {
   late bool requireSdk;
   late bool isRquired;
 
-  PackageModel({
-    required this.devDependency,
-    required this.name,
-    required this.requireSdk,
-    required this.isRquired,
-    this.version,
-  });
-
   PackageModel.fromJson(Map<String, dynamic> json) {
     name = json["package"];
     version = json["version"];
