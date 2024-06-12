@@ -1,0 +1,16 @@
+[
+  {
+    "package": "flutter_launcher_icons",
+    "version": null,
+    "dev_dependency": false,
+    "require_sdk": false,
+    "required": true
+  },
+  {
+    "package": "fluter_native_splash",
+    "version": null,
+    "dev_dependency": false,
+    "require_sdk": false,
+    "required": true
+  }
+]
