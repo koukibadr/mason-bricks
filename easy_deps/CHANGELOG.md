@@ -1,3 +1,15 @@
+# 0.4.0+1 - 24/06/2024
+
+**Changes**
+- Add support for native dart projects
+- Add brick paramter "project_type" to define project's sdk (Flutter/Dart)
+- `PackageInstaller` is now removed and replaced by a global function to install all the packages
+
+**Enhancement**
+- Package installation failure display error log not only when `package.isRequired == true`
+- A success message is displayed when the package is installed
+
+
 # 0.3.0+1 - 12/06/2024
 
 **Changes**
