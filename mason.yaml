@@ -1,8 +1,3 @@
-# Register bricks which can be consumed via the Mason CLI.
-# Run "mason get" to install all registered bricks.
-# To learn more, visit https://docs.brickhub.dev.
 bricks:
   localiz:
     path: ./localiz/
-  easy_deps:
-    path: ./easy_deps/

@@ -36,13 +36,13 @@ Future<void> installPackages(HookContext hookContext) async {
       installationCommandArgs.addAll(['--sdk', 'flutter']);
     }
     installationResult = await Process.run(
-      'flutter',
+      "{{project_type.lowerCase()}}",
       [...installationCommandArgs, '--offline'],
     );
 
     if (installationResult.exitCode != 0) {
       installationResult = await Process.run(
-        'flutter',
+        "{{project_type.lowerCase()}}",
         installationCommandArgs,
       );
     }

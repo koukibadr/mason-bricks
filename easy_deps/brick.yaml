@@ -1,6 +1,15 @@
 name: easy_deps
 description: Add packages installation to your mason brick project
 repository: https://github.com/koukibadr/mason-bricks
-version: 0.3.1+1
+version: 0.4.0+1
 environment:
   mason: ">=0.1.0-dev.51 <0.1.0"
+vars:
+  project_type:
+    type: enum
+    default: Flutter
+    values:
+      - Flutter
+      - Dart
+    prompt: Integrating brick for Flutter or Dart project ?
+    description: The target project sdk type (Flutter or native Dart)
