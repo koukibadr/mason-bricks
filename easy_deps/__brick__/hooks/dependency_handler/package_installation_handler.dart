@@ -5,60 +5,55 @@ import 'package:mason/mason.dart';
 
 import 'package_model.dart';
 
-class PackageInstallationHandler {
-  late File packageJsonFile;
-  final HookContext hookContext;
-
-  PackageInstallationHandler({
-    required this.hookContext,
-  }) {
-    packageJsonFile = File('packages.json');
+Future<List<PackageModel>> getPackagesToInstall() async {
+  var packagesJson = jsonDecode(await File('packages.json').readAsString());
+  List<PackageModel> packages = [];
+  for (var json in packagesJson) {
+    packages.add(PackageModel.fromJson(json));
   }
+  return packages;
+}
 
-  Future<List<PackageModel>> getPackagesToInstall() async {
-    var packagesJson = jsonDecode(await packageJsonFile.readAsString());
-    List<PackageModel> packages = [];
-    for (var json in packagesJson) {
-      packages.add(PackageModel.fromJson(json));
+Future<void> installPackages(HookContext hookContext) async {
+  List<PackageModel> listOfPackages = await getPackagesToInstall();
+
+  hookContext.logger.info('Installing packages');
+
+  for (var package in listOfPackages) {
+    var progress = hookContext.logger.progress('Installing ${package.name}');
+    ProcessResult installationResult;
+    List<String> installationCommandArgs = ['pub', 'add'];
+
+    if (package.devDependency) {
+      installationCommandArgs.add('dev:${package.name}');
+    } else if (package.version != null) {
+      installationCommandArgs.add('${package.name}:${package.version}');
+    } else {
+      installationCommandArgs.add(package.name);
     }
-    return packages;
-  }
 
-  Future<void> installPackages() async {
-    List<PackageModel> listOfPackages = await getPackagesToInstall();
+    if (package.requireSdk) {
+      installationCommandArgs.addAll(['--sdk', 'flutter']);
+    }
+    installationResult = await Process.run(
+      'flutter',
+      [...installationCommandArgs, '--offline'],
+    );
 
-    hookContext.logger.info('Installing packages');
-    for (var package in listOfPackages) {
-      var progress = hookContext.logger.progress('Installing ${package.name}');
-      ProcessResult installationResult;
-      List<String> installationCommandArgs = ['pub', 'add'];
-      if (package.devDependency) {
-        installationCommandArgs.add('dev:${package.name}');
-      } else if (package.version != null) {
-        installationCommandArgs.add('${package.name}:${package.version}');
-      } else {
-        installationCommandArgs.add(package.name);
-      }
-      if (package.requireSdk) {
-        installationCommandArgs.addAll(['--sdk', 'flutter']);
-      }
+    if (installationResult.exitCode != 0) {
       installationResult = await Process.run(
         'flutter',
-        [...installationCommandArgs, '--offline'],
+        installationCommandArgs,
       );
-      if (installationResult.exitCode != 0) {
-        installationResult = await Process.run(
-          'flutter',
-          installationCommandArgs,
-        );
-      }
-      if (installationResult.exitCode != 0 && package.isRquired) {
-        progress.fail("Error: ${installationResult.stderr}");
+    }
+    if (installationResult.exitCode != 0) {
+      progress.fail("Error: ${installationResult.stderr}");
+      if (package.isRquired) {
         await Process.run('rm', ['-f', 'packages.json']);
         exit(-1);
       }
-      progress.complete();
     }
-    await Process.run('rm', ['-f', 'packages.json']);
+    progress.complete("${package.name} installed successfully");
   }
+  await Process.run('rm', ['-f', 'packages.json']);
 }
