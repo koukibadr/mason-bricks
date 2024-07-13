@@ -1,12 +1,18 @@
 import 'dart:convert';
 import 'dart:io';
-
 import 'package:mason/mason.dart';
 
 void run(HookContext context) {
-  //var filePath = context.logger.prompt('Enter your json file relative path');
-  //context.logger.prompt(Directory.current.path);
-  var file = File("${Directory.current.path}/lib/data/${context.vars['class_name']}.json");
+  File? file;
+  try {
+    file = File("${Directory.current.path}/${context.vars['class_name']}.json");
+  } catch (e) {
+    context.logger.err(
+      "{{class_name}}.json not found, make sure you have a json file with the exact dart class name under ${Directory.current.path}",
+    );
+    exit(-1);
+  }
+
   var fileContent = file.readAsStringSync();
   var fileContentAsJson = jsonDecode(fileContent) as Map;
 
