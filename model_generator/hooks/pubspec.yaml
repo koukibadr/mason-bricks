@@ -1,7 +1,6 @@
 name: model_generator_hooks
-
 environment:
   sdk: ">=2.12.0 <3.0.0"
 
 dependencies:
-  mason: ">=0.1.0-dev.57 <0.1.0"
+  mason: ">=0.1.0-dev.51 <0.1.0"

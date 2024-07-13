@@ -26,8 +26,11 @@ environment:
 #  * a list of values (enums only)
 #  * an optional separator (list only)
 vars:
-  name:
+  class_name:
     type: string
-    description: Your name
-    default: Dash
-    prompt: What is your name?
+    description: Dart class name to create
+    prompt: What is your dart class name?
+  remove_json:
+    type: boolean
+    description: Indicate wether to remove or not the json after generating the dart class
+    prompt: Delete json after generating dart class?
