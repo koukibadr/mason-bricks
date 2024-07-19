@@ -1,11 +1,10 @@
 class {{class_name.pascalCase()}} {
   
-  {{#listOfAttributes}}final {{.}};
-  {{/listOfAttributes}}
+  {{#attributes}}final {{{type}}} {{name.camelCase()}};
+  {{/attributes}}
 
-  {{class_name.pascalCase()}}(
-    {{#namesOfAttributes}}{{.}},
-    {{/namesOfAttributes}}
-  );
+  const {{class_name.pascalCase()}}({
+      {{#attributes}}required this.{{name.camelCase()}},
+      {{/attributes}}});
 
 }
