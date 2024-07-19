@@ -1,3 +1,10 @@
+# 0.2.0+1 [19/07/2024]
+
+- Parse other dart types: List, Map and DateTime.
+- Implement attribute default values based on attribute type to initialize Dart objects.
+- Update generated class constructor.
+
+
 # 0.1.0+1 [14/07/2024]
 
 - convert json file to a Dart class.

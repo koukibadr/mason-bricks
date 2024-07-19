@@ -9,6 +9,7 @@ Future releases will support json serialization, freezed, null safety and much m
 
 **Features**
 - Convert a json file to a dart class, all fields are set to final (first version).
+- Support int, String, bool, double, Map, List and DateTime objects.
 
 ## Usage 👨🏻‍💻👩🏻‍💻
 

@@ -1,7 +1,7 @@
 name: model_generator
 description: A fast solution to convert a json file to dart class for API usage.
 repository: https://github.com/koukibadr/mason-bricks
-version: 0.1.0+1
+version: 0.2.0+1
 
 # The following defines the environment for the current brick.
 # It includes the version of mason that the brick requires.
