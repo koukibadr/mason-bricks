@@ -1,0 +1,16 @@
+{
+    "name": "Badreddine",
+    "age": 23,
+    "salary": 23.00,
+    "date": "22/10/1996",
+    "brothers": [
+        {
+            "name": "mohamed",
+            "age": 22
+        },
+        {
+            "name": "fathia",
+            "age": 20
+        }
+    ]
+}

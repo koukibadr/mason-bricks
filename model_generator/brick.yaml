@@ -12,6 +12,10 @@ vars:
     type: string
     description: Dart class name to create
     prompt: What is your dart class name?
+  json_path:
+    type: string
+    description: JSON file path
+    prompt: JSON file path ?
   remove_json:
     type: boolean
     description: Indicate wether to remove or not the json after generating the dart class

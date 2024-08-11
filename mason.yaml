@@ -1,5 +1,3 @@
 bricks:
   localiz:
     path: ./localiz/
-  model_generator:
-    path: ./model_generator/

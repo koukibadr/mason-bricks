@@ -5,10 +5,10 @@ import 'package:mason/mason.dart';
 void run(HookContext context) {
   File? file;
   try {
-    file = File("${Directory.current.path}/${context.vars['class_name']}.json");
+    file = File(context.vars['json_path']);
   } on PathNotFoundException {
     context.logger.err(
-      "{{class_name}}.json not found, make sure you have a json file with the exact dart class name under ${Directory.current.path}",
+      "{{class_name}}.json not found, make sure you have a json file with the exact dart class name under ${Directory.current.path}",//TODO update error message
     );
     exit(-1);
   }
