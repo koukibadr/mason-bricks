@@ -7,3 +7,6 @@ bool isEntryListObject(MapEntry entry) {
   }
   return entryIsList && entryDataIsMap;
 }
+
+bool isEntryMapObject(MapEntry entry) =>
+    entry.value is Map && (entry.value as Map).isNotEmpty;

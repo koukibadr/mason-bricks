@@ -4,20 +4,21 @@ import 'attribute_definition.dart';
 import 'class_definition.dart';
 import 'utility_functions.dart';
 
-List<ClassDefinition> generateClassFromMap(
-  Map<String, dynamic> json,
-  String className,
-) {
+List<ClassDefinition> generateClassFromMap({
+  required Map<String, dynamic> dataToParse,
+  required String className,
+}) {
   List<ClassDefinition> parsedClasses = [];
 
-  var typeListEntries = json.entries.where(
+  var typeListEntries = dataToParse.entries.where(
     (entry) => isEntryListObject(entry),
   );
-  var typeMapEntries = json.entries.where(
-    (entry) => entry.value is Map,
+  var typeMapEntries = dataToParse.entries.where(
+    (entry) => isEntryMapObject(entry),
   );
-  var premitiveTypeEntries = json.entries.where(
-    (entry) => isEntryListObject(entry) == false && entry.value is Map == false,
+  var premitiveTypeEntries = dataToParse.entries.where(
+    (entry) =>
+        isEntryListObject(entry) == false && isEntryMapObject(entry) == false,
   );
 
   var classAttributes = <AttributeDefinition>[];
@@ -25,9 +26,6 @@ List<ClassDefinition> generateClassFromMap(
     var attributeType = getAttributeType(element.value);
     classAttributes.add(
       AttributeDefinition(
-        defaultValue: getDefaultAttributeValue(
-          attributeType: attributeType,
-        ),
         name: element.key,
         type: attributeType.toString().replaceAll('_', ''),
       ),
@@ -35,24 +33,32 @@ List<ClassDefinition> generateClassFromMap(
   });
 
   typeMapEntries.forEach((element) {
-    var listOfClasses = generateClassFromMap(element.value, element.key);
+    var listOfClasses = generateClassFromMap(
+      dataToParse: element.value,
+      className: element.key,
+    );
     parsedClasses.addAll(listOfClasses);
-    classAttributes.add(AttributeDefinition(
-      defaultValue: "null",
-      name: element.key,
-      type: '${element.key.pascalCase}',
-    ));
+    classAttributes.add(
+      AttributeDefinition(
+        name: element.key,
+        type: '${element.key.pascalCase}',
+      ),
+    );
   });
 
   typeListEntries.forEach((element) {
     var list = element.value as List;
-    var listOfClasses = generateClassFromMap(list.first, element.key);
+    var listOfClasses = generateClassFromMap(
+      dataToParse: list.first,
+      className: element.key,
+    );
     parsedClasses.addAll(listOfClasses);
-    classAttributes.add(AttributeDefinition(
-      defaultValue: "null",
-      name: element.key,
-      type: '${element.key.pascalCase}',
-    ));
+    classAttributes.add(
+      AttributeDefinition(
+        name: element.key,
+        type: '${element.key.pascalCase}',
+      ),
+    );
   });
 
   return [
@@ -71,26 +77,5 @@ Type getAttributeType(dynamic attributeValue) {
     }
   } else {
     return attributeValue.runtimeType;
-  }
-}
-
-dynamic getDefaultAttributeValue({
-  required Type attributeType,
-}) {
-  switch (attributeType) {
-    case int:
-      return 0;
-    case String:
-      return "\"\"";
-    case bool:
-      return false;
-    case double:
-      return 0.0;
-    case DateTime:
-      return "DateTime.now()";
-    case List:
-      return [];
-    default:
-      return Map();
   }
 }

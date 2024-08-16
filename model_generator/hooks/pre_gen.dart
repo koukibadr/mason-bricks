@@ -10,7 +10,7 @@ void run(HookContext context) {
     file = File(context.vars['json_path']);
   } on PathNotFoundException {
     context.logger.err(
-      "{{class_name}}.json not found, make sure you have a json file with the exact dart class name under ${Directory.current.path}", //TODO update error message
+      "${context.vars['json_path']} not found, make sure you have a json file with the exact dart class name under ${Directory.current.path}",
     );
     exit(-1);
   }
@@ -21,10 +21,10 @@ void run(HookContext context) {
   context.vars = {
     ...context.vars,
     ...{
-      'models':
-          generateClassFromMap(fileContentAsJson, context.vars['class_name'])
-              .map((item) => item.toMap())
-              .toList(),
+      'models': generateClassFromMap(
+        dataToParse: fileContentAsJson,
+        className: context.vars['class_name'],
+      ).map((item) => item.toMap()).toList(),
     }
   };
 }
