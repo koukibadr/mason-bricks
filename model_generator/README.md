@@ -27,11 +27,13 @@ Localiz will ask you about the languages you want to include into your project
 ## Input Variables 
 
 - `class_name` The class name, make sure the json file is located in the same output directory with the same class name.
+- `json_path` The json's file path which contains the raw JSON.
 - `delete_json_file` the second prompt will ask wether to delete or not the json file after generating the dart class.
 
 ## Output Files 🔥
 
 - a Dart class contains final attributes extracted from json file.
+- all other nested classes with their attributes.
 
 ## Contributing ⚽
 
