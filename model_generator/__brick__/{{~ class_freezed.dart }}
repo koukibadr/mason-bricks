@@ -1,0 +1,14 @@
+part '{{class_name.snakeCase()}}.freezed.dart';
+
+{{#models}}
+@freezed
+class {{class.pascalCase()}} with _${{class.pascalCase()}} {
+  
+    const {{class.pascalCase()}}._();
+  
+    factory {{class.pascalCase()}}({
+    {{#attributes}}required {{{type}}} {{name.camelCase()}},
+    {{/attributes}}}) = _{{class.pascalCase()}};
+
+}
+{{/models}}

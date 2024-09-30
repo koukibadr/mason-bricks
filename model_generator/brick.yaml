@@ -20,3 +20,7 @@ vars:
     type: boolean
     description: Indicate wether to remove or not the json after generating the dart class
     prompt: Delete json after generating dart class?
+  with_freezed:
+    type: boolean
+    description: Indicate wether to generate classes in freezed style or not
+    prompt: Generate classes with freezed?

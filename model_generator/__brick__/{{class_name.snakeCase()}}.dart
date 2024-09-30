@@ -1,13 +1,1 @@
-
-{{#models}}
-class {{class.pascalCase()}} {
-  
-  {{#attributes}}final {{{type}}} {{name.camelCase()}};
-  {{/attributes}}
-
-  {{class.pascalCase()}}({
-    {{#attributes}}required this.{{name.camelCase()}},
-    {{/attributes}}}
-  );
-}
-{{/models}}
+{{#with_freezed}}{{> class_freezed.dart }}{{/with_freezed}}{{^with_freezed}}{{> simple_class.dart }}{{/with_freezed}}
